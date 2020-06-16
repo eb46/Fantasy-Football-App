@@ -28,12 +28,12 @@
             <div class="image">
                 <img ng-src="{{player.image}}">
             </div>
-            <div class="info">
+            <div ng-hide="player.edit" class="info">
                 <h5>{{ player.name }}</h5>
                 <p>Plays for: {{ player.team }}</p>
                 <p>Salary: {{ player.salary }}</p>
             </div>
-            <div class="buttons">
+            <div ng-hide="player.edit" class="buttons">
                 <button ng-hide="player.drafted" ng-click="ctrl.draftPlayer(player)">Draft</button>
                 <button ng-show="player.drafted" ng-click="ctrl.deletePlayer(player)">Officially Drafted</button>
                 <button ng-hide="player.drafted" ng-click="ctrl.toggleEdit(player)">Edit</button>
