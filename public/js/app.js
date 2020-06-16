@@ -33,7 +33,7 @@ app.controller('FootballController', ['$http', function($http){
         url: '/football'
       }
     ).then((response) => {
-      this.players = response.data
+      this.players = response.data;
       console.log(this.players);
     },
       (error) => {
