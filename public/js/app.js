@@ -1,6 +1,6 @@
-const app = angular.model('FootballApp', [])
+const app = angular.module('FootballApp', [])
 
-app.controller('MainController', ['$http', function($http){
+app.controller('FootballController', ['$http', function($http){
   this.players = [];
   this.newPlayer = {};
 
