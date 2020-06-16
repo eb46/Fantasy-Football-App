@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+.title {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.player {
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.player:hover {
+    border-color: #333;
+}
+.player .info,
+.player .buttons {
+    padding: 0 15px;
+}
+.player .info {
+    padding-top: 10px;
+}
+.player .buttons {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.player .image {
+    height: 200px;
+    overflow: hidden;
+}
+.player .image img {
+    max-width: 125%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.player form {
+    margin: 0;
+}
+.player .edit-form {
+    margin: 15px;
+}
