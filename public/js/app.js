@@ -18,6 +18,7 @@ app.controller('FootballController', ['$http', function($http){
         }
       }
     ).then((response) => {
+      this.players.unshift(response.data)
       console.log(response);
     },
       (error) => {
@@ -33,7 +34,7 @@ app.controller('FootballController', ['$http', function($http){
         url: '/football'
       }
     ).then((response) => {
-      this.players = response.data;
+      this.players = response.data
       console.log(this.players);
     },
       (error) => {
@@ -49,8 +50,9 @@ app.controller('FootballController', ['$http', function($http){
         url: '/football/' + player._id
       }
     ).then((response) => {
-      this.getPlayers();
-      console.log(response);
+      const playerIndex = this.players.find(player => player._id === response.data._id);
+      this.players.splice(playerIndex, 1)
+      console.log(response.data);
     },
       (error) => {
         console.log(error);
@@ -59,6 +61,7 @@ app.controller('FootballController', ['$http', function($http){
   };
 
   this.updatePlayer = (player) => {
+    player.edit = false
     $http(
       {
         method: 'PUT',
@@ -83,6 +86,12 @@ app.controller('FootballController', ['$http', function($http){
   this.toggleEdit = player => {
       player.edit = !player.edit;
   };
+
+  this.draftPlayer = player => {
+    player.drafted = true
+    this.updatePlayer(player)
+    console.log(this.drafted);
+  }
 
   this.getPlayers()
 
