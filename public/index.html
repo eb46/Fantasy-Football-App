@@ -15,7 +15,7 @@
         <h1>Footballr</h1>
     </div>
     <div class="form">
-        <form ng-submit="createPlayer()">
+        <form ng-submit="ctrl.createPlayer()">
             <input type="text" ng-model="ctrl.newPlayer.name" placeholder="Name">
             <input type="text" ng-model="ctrl.newPlayer.team" placeholder="Team">
             <input type="text" ng-model="ctrl.newPlayer.salary" placeholder="Salary">
@@ -24,7 +24,7 @@
         </form>
     </div>
     <div class="data">
-        <div class="player four columns" ng-repeat="player of ctrl.players">
+        <div class="player four columns" ng-repeat="player in ctrl.players">
             <div class="image">
                 <img ng-src="player.image">
             </div>
@@ -34,12 +34,12 @@
                 <p>Salary: {{ player.salary }}</p>
             </div>
             <div class="buttons">
-                <button ng-hide="player.drafted" ng-click="draftPlayer(player)">Draft</button>
-                <button ng-show="player.drafted" ng-click="deletePlayer(player)">Officially Drafted</button>
-                <button ng-hide="player.drafted" ng-click="toggleEdit(player)">Edit</button>
+                <button ng-hide="player.drafted" ng-click="ctrl.draftPlayer(player)">Draft</button>
+                <button ng-show="player.drafted" ng-click="ctrl.deletePlayer(player)">Officially Drafted</button>
+                <button ng-hide="player.drafted" ng-click="ctrl.toggleEdit(player)">Edit</button>
             </div>
             <div ng-hide="player.edit" class="edit-form">
-                <form ng-submit="updatePlayer(player)">
+                <form ng-submit="ctrl.updatePlayer(player)">
                     <input type="text" ng-model="player.name" placeholder="Name" value="player.name">
                     <input type="text" ng-model="player.team" placeholder="Team" value="player.team">
                     <input type="text" ng-model="player.salary" placeholder="Salary" value="player.salary">
@@ -50,6 +50,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
