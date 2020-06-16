@@ -18,6 +18,7 @@ app.controller('FootballController', ['$http', function($http){
         }
       }
     ).then((response) => {
+      this.newPlayer = {};
       this.players.unshift(response.data)
       console.log(response);
     },
