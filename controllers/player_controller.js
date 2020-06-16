@@ -6,17 +6,13 @@ router.post('/', (req, res) => {
     console.log(req.body);
     req.body.adopted = false;
     Players.create(req.body, (err, createdPlayer) => {
-        Players.find({}, (err, foundPlayers) => {
-            res.json(foundPlayers);
-        });
-    })
+        res.json(createdPlayer);
+    });
 });
 
 router.delete('/:id', (req, res) => {
     Players.findByIdAndRemove(req.params.id, (err, deletedPlayer) => {
-        Players.find({}, (err, foundPlayers) => {
-            res.json(foundPlayers);
-        })
+        res.json(deletedPlayer);
     });
 });
 
@@ -26,9 +22,7 @@ router.put('/:id', (req, res) => {
         req.body,
         { new: true },
         (err, updatedPlayer) => {
-            Players.find({}, (err, foundPlayers) => {
-                res.json(foundPlayers);
-            })
+            res.json(updatedPlayer);
         }
     );
 });
