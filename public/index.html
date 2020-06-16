@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="FootballApp">
+<head>
+    <meta charset="utf-8">
+    <title>Footballr</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body ng-controller="FootballController as ctrl">
+<div class="container">
+    <div class="title">
+        <h1>Footballr</h1>
+    </div>
+    <div class="form">
+        <form ng-submit="ctrl.createPlayer()">
+            <input type="text" ng-model="ctrl.newPlayer.name" placeholder="Name">
+            <input type="text" ng-model="ctrl.newPlayer.team" placeholder="Team">
+            <input type="text" ng-model="ctrl.newPlayer.salary" placeholder="Salary">
+            <input type="text" ng-model="ctrl.newPlayer.image" placeholder="Image">
+            <button type="submit">Add Player</button>
+        </form>
+    </div>
+    <div class="data">
+        <div class="player four columns" ng-repeat="player in ctrl.players">
+            <div class="image">
+                <img ng-src="{{player.image}}">
+            </div>
+            <div class="info">
+                <h5>{{ player.name }}</h5>
+                <p>Plays for: {{ player.team }}</p>
+                <p>Salary: {{ player.salary }}</p>
+            </div>
+            <div class="buttons">
+                <button ng-hide="player.drafted" ng-click="ctrl.draftPlayer(player)">Draft</button>
+                <button ng-show="player.drafted" ng-click="ctrl.deletePlayer(player)">Officially Drafted</button>
+                <button ng-hide="player.drafted" ng-click="ctrl.toggleEdit(player)">Edit</button>
+            </div>
+            <div ng-show="player.edit" class="edit-form">
+                <form ng-submit="ctrl.updatePlayer(player)">
+                    <input type="text" ng-model="player.name" placeholder="Name" value="player.name">
+                    <input type="text" ng-model="player.team" placeholder="Team" value="player.team">
+                    <input type="text" ng-model="player.salary" placeholder="Salary" value="player.salary">
+                    <input type="text" ng-model="player.image" placeholder="Image" value="player.image">
+                    <button type="submit">Edit Player</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
