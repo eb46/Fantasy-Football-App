@@ -1,6 +1,8 @@
-const app = angular.model('FootballApp', [])
+const app = angular.module('FootballApp', [])
 
-app.controller('MainController', ['$http', function($http){
+app.controller('FootballController', ['$http', function($http){
+  this.players = [];
+  this.newPlayer = {};
 
   this.createPlayer = () => {
     $http(
@@ -8,10 +10,10 @@ app.controller('MainController', ['$http', function($http){
         method: 'POST',
         url: '/football',
         data: {
-          name: this.name,
-          team: this.team,
-          salary: this.salary,
-          image: this.image,
+          name: this.newPlayer.name,
+          team: this.newPlayer.team,
+          salary: this.newPlayer.salary,
+          image: this.newPlayer.image,
           drafted: false
         }
       }
@@ -22,7 +24,7 @@ app.controller('MainController', ['$http', function($http){
         console.log(error);
       }
     )
-  }
+  };
 
   this.getPlayers = () => {
     $http(
@@ -38,7 +40,7 @@ app.controller('MainController', ['$http', function($http){
         console.log(error);
       }
     )
-  }
+  };
 
   this.deletePlayer = (player) => {
     $http(
@@ -47,14 +49,14 @@ app.controller('MainController', ['$http', function($http){
         url: '/football/' + player._id
       }
     ).then((response) => {
-      this.getPlayers()
-      console.log(resonse);
+      this.getPlayers();
+      console.log(response);
     },
       (error) => {
         console.log(error);
       }
     )
-  }
+  };
 
   this.updatePlayer = (player) => {
     $http(
@@ -76,8 +78,12 @@ app.controller('MainController', ['$http', function($http){
         console.log(error);
       }
     )
-  }
+  };
+
+  this.toggleEdit = player => {
+      player.edit = !player.edit;
+  };
 
   this.getPlayers()
 
-}])
+}]);
