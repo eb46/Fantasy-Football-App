@@ -49,9 +49,24 @@ body {
 .player .edit-form {
     margin: 15px;
 }
-
+.data-controls {
+    width: 100%;
+    text-align: center;
+}
 .sort button {
     padding: 5px 10px;
     line-height: 1px;
     margin-left: 15px;
+}
+.data,
+.data-controls {
+    margin: 0 -7.5px;
+}
+.four.columns {
+    width: calc(33.333333% - 15px);
+    margin: 7.5px;
+}
+.data-controls {
+    width: 100%;
+    display: inline-block;
 }
