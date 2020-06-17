@@ -72,7 +72,7 @@ router.get('/seed', (req, res) => {
         drafted: false
       },
       {
-        name: 'https://tinyurl.com/ybxh8clr',
+        name: 'OJ Howard',
         team: 'Buccaneers',
         salary: 10,
         image: 'https://tinyurl.com/ybxh8clr',
