@@ -23,6 +23,18 @@
             <button type="submit">Add Player</button>
         </form>
     </div>
+    
+    <div class="data-controls">
+        <div class="sort name four columns">
+            Sort By Name: <button ng-click="ctrl.sortPlayers($event, 'name',-1)">↓</button><button ng-click="ctrl.sortPlayers($event, 'name',1)">↑</button>
+        </div>
+        <div class="sort team four columns">
+            Sort By Team: <button ng-click="ctrl.sortPlayers($event, 'team',-1)">↓</button><button ng-click="ctrl.sortPlayers($event, 'team',1)">↑</button>
+        </div>
+        <div class="sort salary four columns">
+            Sort By Salary: <button ng-click="ctrl.sortPlayers($event, 'salary',-1)">↓</button><button ng-click="ctrl.sortPlayers($event, 'salary',1)">↑</button>
+        </div>
+    </div>
     <div class="data">
         <div class="player four columns" ng-repeat="player in ctrl.players">
             <div class="image">
