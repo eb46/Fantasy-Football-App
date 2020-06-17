@@ -70,6 +70,13 @@ router.get('/seed', (req, res) => {
         salary: 20,
         image: 'https://tinyurl.com/y7wbre7u',
         drafted: false
+      },
+      {
+        name: 'https://tinyurl.com/ybxh8clr',
+        team: 'Buccaneers',
+        salary: 10,
+        image: 'https://tinyurl.com/ybxh8clr',
+        drafted: false
       }
     ]
   )
