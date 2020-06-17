@@ -49,3 +49,9 @@ body {
 .player .edit-form {
     margin: 15px;
 }
+
+.sort button {
+    padding: 5px 10px;
+    line-height: 1px;
+    margin-left: 15px;
+}
