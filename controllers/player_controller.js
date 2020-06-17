@@ -33,4 +33,53 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/seed', (req, res) => {
+  Players.create(
+    [
+      {
+        name: 'Tom Brady',
+        team: 'Buccaneers',
+        salary: 25,
+        image: 'https://tinyurl.com/ycmyttv4',
+        drafted: false
+      },
+      {
+        name: 'Rob Gronkowski',
+        team: 'Buccaneers',
+        salary: 20,
+        image: 'https://tinyurl.com/y7w9d6aj',
+        drafted: false
+      },
+      {
+        name: 'Julian Edelman',
+        team: 'Patriots',
+        salary: 15,
+        image: 'https://tinyurl.com/ycvgj7ya',
+        drafted: false
+      },
+      {
+        name: 'Mike Evans',
+        team: 'Buccaneers',
+        salary: 20,
+        image: 'https://tinyurl.com/y9ffzxof',
+        drafted: false
+      },
+      {
+        name: 'Chris Godwin',
+        team: 'Buccaneers',
+        salary: 20,
+        image: 'https://tinyurl.com/y7wbre7u',
+        drafted: false
+      },
+      {
+        name: 'OJ Howard',
+        team: 'Buccaneers',
+        salary: 10,
+        image: 'https://tinyurl.com/ybxh8clr',
+        drafted: false
+      }
+    ]
+  )
+})
+
 module.exports = router;

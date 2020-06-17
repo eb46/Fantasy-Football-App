@@ -18,7 +18,9 @@ app.controller('FootballController', ['$http', function($http){
         }
       }
     ).then((response) => {
+      this.newPlayer = {};
       this.players.unshift(response.data)
+      this.newPlayer = {}
       console.log(response);
     },
       (error) => {
@@ -61,7 +63,7 @@ app.controller('FootballController', ['$http', function($http){
   };
 
   this.updatePlayer = (player) => {
-    player.edit = false
+    player.edit = false;
     $http(
       {
         method: 'PUT',
@@ -88,11 +90,23 @@ app.controller('FootballController', ['$http', function($http){
   };
 
   this.draftPlayer = player => {
-    player.drafted = true
+    player.drafted = true;
     this.updatePlayer(player)
     console.log(this.drafted);
-  }
+  };
 
-  this.getPlayers()
+
+  this.sortPlayers = ($event, property, direction) => {
+        this.players.sort((a, b) => {
+            console.log(a[property]);
+            if(property === 'salary') {
+                return (a[property] - b[property]) * direction;
+            } else {
+                return a[property].localeCompare(b[property]) * direction;
+            }
+        })
+  };
+
+  this.getPlayers();
 
 }]);
